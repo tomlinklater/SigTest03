@@ -6,19 +6,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="logo-header">
+  <header class="logo-header">
     <picture>
       <source srcset="Arise-Logo-White.png" media="(prefers-color-scheme: dark)">
       <img src="Arise-Logo-Black.png" alt="ARISE Church Logo">
     </picture>
     <div class="subtitle">Email Signature Generator</div>
-  </div>
+  </header>
 
-  <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-  <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
-  <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
-  <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
-  <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+  <form id="sigForm">
+    <div class="form-row">
+      <label for="fullName">Full Name:</label>
+      <input id="fullName" type="text" oninput="updateSignature()">
+    </div>
+    <div class="form-row">
+      <label for="title">Title:</label>
+      <input id="title" type="text" oninput="updateSignature()">
+    </div>
+    <div class="form-row">
+      <label for="phone">Phone:</label>
+      <input id="phone" type="text" oninput="updateSignature()">
+    </div>
+    <div class="form-row">
+      <label for="email">Email:</label>
+      <input id="email" type="text" oninput="updateSignature()">
+    </div>
+    <div class="form-row">
+      <label for="location">Location:</label>
+      <input id="location" type="text" oninput="updateSignature()">
+    </div>
+  </form>
 
   <div id="signature">
     <div class="sig-table">
@@ -26,13 +43,11 @@
         <img src="Sig%20Logo.png" width="100" alt="Signature Logo">
       </div>
       <div class="sig-details" id="sigDetails">
-        <strong>Ben Ellis</strong><br>
-        Kaiwhakahaere Huinga | Events Manager<br>
-        Te Rōpū Ākonga o Te Whare Wānanga o Waitaha<br>
-        University of Canterbury Students’ Association<br>
-        📞 03 369 6559 | 027 228 2397<br>
-        📧 ben.ellis@ucsa.org.nz<br>
-        📍 Level 2, Haere-roa, 90 Ilam Rd, Christchurch 8041
+        <strong>Your Name</strong><br>
+        Your Title<br>
+        📞 Phone<br>
+        📧 email@example.com<br>
+        📍 Your Location
       </div>
     </div>
   </div>
@@ -50,8 +65,6 @@
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
         ${title}<br>
-        Te Rōpū Ākonga o Te Whare Wānanga o Waitaha<br>
-        University of Canterbury Students’ Association<br>
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
