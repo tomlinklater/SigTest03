@@ -8,14 +8,18 @@
       font-family: Arial, sans-serif;
       margin: 30px;
     }
-    input {
-      padding: 8px;
-      margin: 5px;
-      width: 300px;
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
     }
-    label {
-      display: block;
-      margin-top: 10px;
+    .form-row label {
+      width: 200px;
+      margin-right: 10px;
+    }
+    .form-row input {
+      padding: 8px;
+      width: 300px;
     }
     #signature {
       margin-top: 30px;
@@ -24,15 +28,12 @@
       background: #f9f9f9;
       max-width: 600px;
     }
-    .sig-table {
-      display: flex;
-      gap: 20px;
-    }
-    .sig-logo {
-      width: 100px;
-    }
     .sig-details {
       font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .sig-logo {
+      text-align: center;
     }
     #copyBtn {
       margin-top: 10px;
@@ -42,27 +43,43 @@
 </head>
 <body>
   <h2>Arise Church Email Signature Generator</h2>
-  
-  <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-  <label>Role in the Organisation: <input id="title" type="text" oninput="updateSignature()"></label>
-  <label>Campus: <input id="campus" type="text" oninput="updateSignature()"></label>
-  <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
-  <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
-  <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+
+  <div class="form-row">
+    <label for="fullName">Full Name:</label>
+    <input id="fullName" type="text" oninput="updateSignature()">
+  </div>
+  <div class="form-row">
+    <label for="title">Role in the Organisation:</label>
+    <input id="title" type="text" oninput="updateSignature()">
+  </div>
+  <div class="form-row">
+    <label for="campus">Campus:</label>
+    <input id="campus" type="text" oninput="updateSignature()">
+  </div>
+  <div class="form-row">
+    <label for="phone">Phone:</label>
+    <input id="phone" type="text" oninput="updateSignature()">
+  </div>
+  <div class="form-row">
+    <label for="email">Email:</label>
+    <input id="email" type="text" oninput="updateSignature()">
+  </div>
+  <div class="form-row">
+    <label for="location">Location:</label>
+    <input id="location" type="text" oninput="updateSignature()">
+  </div>
 
   <div id="signature">
-    <div class="sig-table">
-      <div class="sig-logo">
-        <img src="arise-logo.png" width="120" alt="Arise Church Logo">
-      </div>
-      <div class="sig-details" id="sigDetails">
-        <strong>Your Name</strong><br>
-        Your Role<br>
-        Arise Church in Your Campus<br>
-        📞 Phone<br>
-        📧 email@example.com<br>
-        📍 Your Location
-      </div>
+    <div class="sig-details" id="sigDetails">
+      <strong>Your Name</strong><br>
+      Your Role<br>
+      Arise Church in Your Campus<br>
+      📞 Phone<br>
+      📧 email@example.com<br>
+      📍 Your Location
+    </div>
+    <div class="sig-logo">
+      <img src="arise-logo.png" width="120" alt="Arise Church Logo">
     </div>
   </div>
 
