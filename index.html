@@ -1,91 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Arise Church Email Signature Generator</title>
+  <meta charset="UTF-8" />
+  <title>Email Signature Generator</title>
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --border-color: #ccc;
+      --input-bg: #ffffff;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --border-color: #444;
+      --input-bg: #1e1e1e;
+    }
+
     body {
+      background: var(--bg-color);
+      color: var(--text-color);
       font-family: Arial, sans-serif;
       margin: 30px;
+      transition: background 0.3s, color 0.3s;
     }
-    .form-row {
+
+    .form-group {
       display: flex;
-      align-items: center;
-      margin: 10px 0;
+      flex-direction: column;
+      margin-bottom: 10px;
+      width: 320px;
     }
-    .form-row label {
-      width: 200px;
-      margin-right: 10px;
-    }
-    .form-row input {
+
+    input {
       padding: 8px;
-      width: 300px;
+      font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
     }
+
     #signature {
       margin-top: 30px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border-color);
       padding: 20px;
-      background: #f9f9f9;
+      background: var(--input-bg);
       max-width: 600px;
     }
+
+    .sig-table {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .sig-details {
       font-size: 14px;
-      margin-bottom: 20px;
     }
+
     .sig-logo {
-      text-align: center;
+      margin-top: 15px;
     }
+
     #copyBtn {
       margin-top: 10px;
       padding: 10px 15px;
+      font-size: 14px;
+      background: #0078d4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #copyBtn:hover {
+      background: #005ea1;
+    }
+
+    .logo-header {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-header img {
+      height: 50px;
+    }
+
+    #themeToggle {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: color 0.3s;
     }
   </style>
 </head>
 <body>
-  <h2>Arise Church Email Signature Generator</h2>
+  <div class="logo-header">
+    <img src="arise-logo.png" alt="Arise Church Logo" />
+    <button id="themeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">🌙</button>
+  </div>
 
-  <div class="form-row">
+  <div class="form-group">
     <label for="fullName">Full Name:</label>
-    <input id="fullName" type="text" oninput="updateSignature()">
+    <input id="fullName" type="text" oninput="updateSignature()" />
   </div>
-  <div class="form-row">
+  <div class="form-group">
     <label for="title">Role in the Organisation:</label>
-    <input id="title" type="text" oninput="updateSignature()">
+    <input id="title" type="text" oninput="updateSignature()" />
   </div>
-  <div class="form-row">
+  <div class="form-group">
     <label for="campus">Campus:</label>
-    <input id="campus" type="text" oninput="updateSignature()">
+    <input id="campus" type="text" oninput="updateSignature()" />
   </div>
-  <div class="form-row">
+  <div class="form-group">
     <label for="phone">Phone:</label>
-    <input id="phone" type="text" oninput="updateSignature()">
+    <input id="phone" type="text" oninput="updateSignature()" />
   </div>
-  <div class="form-row">
+  <div class="form-group">
     <label for="email">Email:</label>
-    <input id="email" type="text" oninput="updateSignature()">
+    <input id="email" type="text" oninput="updateSignature()" />
   </div>
-  <div class="form-row">
+  <div class="form-group">
     <label for="location">Location:</label>
-    <input id="location" type="text" oninput="updateSignature()">
+    <input id="location" type="text" oninput="updateSignature()" />
   </div>
 
   <div id="signature">
-    <div class="sig-details" id="sigDetails">
-      <strong>Your Name</strong><br>
-      Your Role<br>
-      Arise Church in Your Campus<br>
-      📞 Phone<br>
-      📧 email@example.com<br>
-      📍 Your Location
-    </div>
-    <div class="sig-logo">
-      <img src="arise-logo.png" width="120" alt="Arise Church Logo">
+    <div class="sig-table">
+      <div class="sig-details" id="sigDetails">
+        <strong>Your Name</strong><br>
+        Your Role<br>
+        Arise Church in Your Campus<br>
+        📞 Phone<br>
+        📧 email@example.com<br>
+        📍 Your Location
+      </div>
+      <div class="sig-logo">
+        <img src="arise-logo.png" width="120" alt="Arise Church Logo" />
+      </div>
     </div>
   </div>
 
   <button id="copyBtn" onclick="copySignature()">Copy HTML</button>
 
   <script>
+    // Apply dark mode on load based on system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+    }
+
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
       const title = document.getElementById('title').value || 'Your Role';
@@ -122,6 +189,10 @@
       }
 
       document.body.removeChild(tempDiv);
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
     }
   </script>
 </body>
