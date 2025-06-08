@@ -31,19 +31,28 @@ body {
   font-weight: bold;
 }
 
-input {
-  padding: 8px;
-  margin: 5px;
-  width: 300px;
+form {
+  max-width: 600px;
+  margin-bottom: 30px;
 }
 
-label {
-  display: block;
-  margin-top: 10px;
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-row label {
+  width: 120px;
+  font-weight: bold;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 8px;
 }
 
 #signature {
-  margin-top: 30px;
   border: 1px solid #ccc;
   padding: 20px;
   background: #f9f9f9;
@@ -74,4 +83,5 @@ label {
 #copyBtn {
   margin-top: 10px;
   padding: 10px 15px;
+  cursor: pointer;
 }
