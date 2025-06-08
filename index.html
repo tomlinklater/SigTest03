@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Signature Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 300px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    #signature {
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      background: #f9f9f9;
+      max-width: 600px;
+    }
+    .sig-table {
+      display: flex;
+      gap: 20px;
+    }
+    .sig-logo {
+      width: 80px;
+    }
+    .sig-details {
+      font-size: 14px;
+    }
+    #copyBtn {
+      margin-top: 10px;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Email Signature Generator</h2>
+  
+  <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
+  <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+  <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
+  <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
+  <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+
+  <div id="signature">
+    <div class="sig-table">
+      <div class="sig-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/1c/UCSA_logo.png" width="80" alt="Logo">
+      </div>
+      <div class="sig-details" id="sigDetails">
+        <strong>Ben Ellis</strong><br>
+        Kaiwhakahaere Huinga | Events Manager<br>
+        Te Rōpū Ākonga o Te Whare Wānanga o Waitaha<br>
+        University of Canterbury Students’ Association<br>
+        📞 03 369 6559 | 027 228 2397<br>
+        📧 ben.ellis@ucsa.org.nz<br>
+        📍 Level 2, Haere-roa, 90 Ilam Rd, Christchurch 8041
+      </div>
+    </div>
+  </div>
+
+  <button id="copyBtn" onclick="copySignature()">Copy HTML</button>
+
+  <script>
+    function updateSignature() {
+      const name = document.getElementById('fullName').value || 'Your Name';
+      const title = document.getElementById('title').value || 'Your Title';
+      const phone = document.getElementById('phone').value || 'Phone';
+      const email = document.getElementById('email').value || 'email@example.com';
+      const location = document.getElementById('location').value || 'Your Location';
+
+      document.getElementById('sigDetails').innerHTML = `
+        <strong>${name}</strong><br>
+        ${title}<br>
+        Te Rōpū Ākonga o Te Whare Wānanga o Waitaha<br>
+        University of Canterbury Students’ Association<br>
+        📞 ${phone}<br>
+        📧 ${email}<br>
+        📍 ${location}
+      `;
+    }
+
+    function copySignature() {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = document.getElementById("signature").innerHTML;
+      document.body.appendChild(tempDiv);
+
+      const range = document.createRange();
+      range.selectNode(tempDiv);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+
+      try {
+        document.execCommand("copy");
+        alert("Signature copied to clipboard!");
+      } catch (err) {
+        alert("Failed to copy. Try selecting and copying manually.");
+      }
+
+      document.body.removeChild(tempDiv);
+    }
+  </script>
+</body>
+</html>
