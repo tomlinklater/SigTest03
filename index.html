@@ -1,168 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Email Signature Generator</title>
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --border-color: #ccc;
-      --input-bg: #ffffff;
-      --logo-header: url('Arise-Logo-Black.png');
-      --logo-signature: url('Arise-Logo-Black.png');
-    }
-
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --border-color: #444;
-      --input-bg: #1e1e1e;
-      --logo-header: url('Arise-Logo-White.png');
-      --logo-signature: url('Arise-Logo-White.png');
-    }
-
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-      width: 320px;
-    }
-
-    input {
-      padding: 8px;
-      font-size: 14px;
-      background: var(--input-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-    }
-
-    #signature {
-      margin-top: 30px;
-      border: 1px solid var(--border-color);
-      padding: 20px;
-      background: var(--input-bg);
-      max-width: 600px;
-    }
-
-    .sig-table {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .sig-details {
-      font-size: 14px;
-    }
-
-    .sig-logo {
-      margin-top: 15px;
-    }
-
-    .sig-logo img {
-      width: 120px;
-    }
-
-    #copyBtn {
-      margin-top: 10px;
-      padding: 10px 15px;
-      font-size: 14px;
-      background: #0078d4;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    #copyBtn:hover {
-      background: #005ea1;
-    }
-
-    .logo-header {
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .logo-header img {
-      height: 200px;
-      transition: filter 0.3s;
-    }
-
-    .logo-subtitle {
-      font-size: 24px;
-      margin-top: 10px;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-    }
-
-    #themeToggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-color);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <button id="themeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">🌙</button>
-
   <div class="logo-header">
-    <img id="headerLogo" src="Arise-Logo-Black.png" alt="Arise Church Logo" />
-    <div class="logo-subtitle">Email Signature Generator</div>
+    <picture>
+      <source srcset="Arise-Logo-White.png" media="(prefers-color-scheme: dark)">
+      <img src="Arise-Logo-Black.png" alt="ARISE Church Logo">
+    </picture>
+    <div class="subtitle">Email Signature Generator</div>
   </div>
 
-  <div class="form-group">
-    <label for="fullName">Full Name:</label>
-    <input id="fullName" type="text" oninput="updateSignature()" />
-  </div>
-  <div class="form-group">
-    <label for="title">Role in the Organisation:</label>
-    <input id="title" type="text" oninput="updateSignature()" />
-  </div>
-  <div class="form-group">
-    <label for="campus">Campus:</label>
-    <input id="campus" type="text" oninput="updateSignature()" />
-  </div>
-  <div class="form-group">
-    <label for="phone">Phone:</label>
-    <input id="phone" type="text" oninput="updateSignature()" />
-  </div>
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input id="email" type="text" oninput="updateSignature()" />
-  </div>
-  <div class="form-group">
-    <label for="location">Location:</label>
-    <input id="location" type="text" oninput="updateSignature()" />
-  </div>
+  <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
+  <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+  <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
+  <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
+  <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
 
   <div id="signature">
     <div class="sig-table">
+      <div class="sig-logo">
+        <img src="Sig%20Logo.png" width="100" alt="Signature Logo">
+      </div>
       <div class="sig-details" id="sigDetails">
         <strong>Your Name</strong><br>
-        Your Role<br>
-        Arise Church in Your Campus<br>
+        Your Title<br>
         📞 Phone<br>
         📧 email@example.com<br>
         📍 Your Location
-      </div>
-      <div class="sig-logo">
-        <img id="sigLogo" src="Arise-Logo-Black.png" alt="Arise Church Logo" />
       </div>
     </div>
   </div>
@@ -170,17 +38,9 @@
   <button id="copyBtn" onclick="copySignature()">Copy HTML</button>
 
   <script>
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      document.body.classList.add('dark');
-    }
-
-    updateLogos();
-
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
-      const title = document.getElementById('title').value || 'Your Role';
-      const campus = document.getElementById('campus').value || 'Your Campus';
+      const title = document.getElementById('title').value || 'Your Title';
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
@@ -188,7 +48,6 @@
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
         ${title}<br>
-        Arise Church in ${campus}<br>
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
@@ -213,17 +72,6 @@
       }
 
       document.body.removeChild(tempDiv);
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      updateLogos();
-    }
-
-    function updateLogos() {
-      const isDark = document.body.classList.contains("dark");
-      document.getElementById("headerLogo").src = isDark ? "Arise-Logo-White.png" : "Arise-Logo-Black.png";
-      document.getElementById("sigLogo").src = isDark ? "Arise-Logo-White.png" : "Arise-Logo-Black.png";
     }
   </script>
 </body>
