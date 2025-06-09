@@ -65,6 +65,10 @@ body {
   padding: 20px;
   background: #f9f9f9;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .dark-mode #signature {
@@ -72,18 +76,13 @@ body {
   border-color: #444;
 }
 
-.sig-table {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.sig-logo {
-  width: 100px;
-}
-
 .sig-details {
   font-size: 14px;
+}
+
+.sig-logo img {
+  width: 200px;
+  height: auto;
 }
 
 #copyBtn {
