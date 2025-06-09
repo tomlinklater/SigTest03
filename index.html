@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Email Signature Generator</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="logo-header">
     <picture>
       <source srcset="Arise-Logo-White.png" media="(prefers-color-scheme: dark)">
-      <img src="Arise-Logo-Black.png" alt="ARISE Church Logo">
+      <img src="Arise-Logo-Black.png" alt="ARISE Church Logo" />
     </picture>
     <div class="subtitle">Email Signature Generator</div>
   </header>
 
+  <button id="modeToggle">🌙</button>
+
   <form id="sigForm">
-    <div class="form-row">
-      <label for="fullName">Full Name:</label>
-      <input id="fullName" type="text" oninput="updateSignature()">
-    </div>
-    <div class="form-row">
-      <label for="title">Title:</label>
-      <input id="title" type="text" oninput="updateSignature()">
-    </div>
-    <div class="form-row">
-      <label for="phone">Phone:</label>
-      <input id="phone" type="text" oninput="updateSignature()">
-    </div>
-    <div class="form-row">
-      <label for="email">Email:</label>
-      <input id="email" type="text" oninput="updateSignature()">
-    </div>
-    <div class="form-row">
-      <label for="location">Location:</label>
-      <input id="location" type="text" oninput="updateSignature()">
-    </div>
+    <ul class="form-list">
+      <li>
+        <label for="fullName">Full Name:</label>
+        <input id="fullName" type="text" oninput="updateSignature()" />
+      </li>
+      <li>
+        <label for="title">Title:</label>
+        <input id="title" type="text" oninput="updateSignature()" />
+      </li>
+      <li>
+        <label for="phone">Phone:</label>
+        <input id="phone" type="text" oninput="updateSignature()" />
+      </li>
+      <li>
+        <label for="email">Email:</label>
+        <input id="email" type="text" oninput="updateSignature()" />
+      </li>
+      <li>
+        <label for="location">Location:</label>
+        <input id="location" type="text" oninput="updateSignature()" />
+      </li>
+    </ul>
   </form>
 
   <div id="signature">
     <div class="sig-table">
       <div class="sig-logo">
-        <img src="Sig%20Logo.png" width="100" alt="Signature Logo">
+        <img src="Sig%20Logo.png" width="100" alt="Signature Logo" />
       </div>
       <div class="sig-details" id="sigDetails">
-        <strong>Your Name</strong><br>
-        Your Title<br>
-        📞 Phone<br>
-        📧 email@example.com<br>
+        <strong>Your Name</strong><br />
+        Your Title<br />
+        📞 Phone<br />
+        📧 email@example.com<br />
         📍 Your Location
       </div>
     </div>
@@ -56,13 +60,13 @@
 
   <script>
     function updateSignature() {
-      const name = document.getElementById('fullName').value || 'Your Name';
-      const title = document.getElementById('title').value || 'Your Title';
-      const phone = document.getElementById('phone').value || 'Phone';
-      const email = document.getElementById('email').value || 'email@example.com';
-      const location = document.getElementById('location').value || 'Your Location';
+      const name = document.getElementById("fullName").value || "Your Name";
+      const title = document.getElementById("title").value || "Your Title";
+      const phone = document.getElementById("phone").value || "Phone";
+      const email = document.getElementById("email").value || "email@example.com";
+      const location = document.getElementById("location").value || "Your Location";
 
-      document.getElementById('sigDetails').innerHTML = `
+      document.getElementById("sigDetails").innerHTML = `
         <strong>${name}</strong><br>
         ${title}<br>
         📞 ${phone}<br>
@@ -90,6 +94,13 @@
 
       document.body.removeChild(tempDiv);
     }
+
+    // Dark/light mode toggle
+    const modeToggle = document.getElementById("modeToggle");
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      modeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞" : "🌙";
+    });
   </script>
 </body>
 </html>
