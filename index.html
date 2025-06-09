@@ -15,6 +15,10 @@
   <div class="form-fields">
     <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
     <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+    
+    <!-- New Campus field added here -->
+    <label><strong>Campus:</strong> <input id="campus" type="text" oninput="updateSignature()"></label>
+    
     <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
     <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
     <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
@@ -40,13 +44,17 @@
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
       const title = document.getElementById('title').value || 'Your Title';
+      const campus = document.getElementById('campus').value || '';  // New campus field
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
 
+      // Update the signature details
+      let campusText = campus ? ` <strong>${campus}</strong>` : '';  // Bold campus text if entered
+
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
-        ${title}<br>
+        ${title}${campusText}<br>
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
