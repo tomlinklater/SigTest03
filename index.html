@@ -14,10 +14,10 @@
   <!-- Input fields container -->
   <div class="form-fields">
     <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-    <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+    <label>Role: <input id="role" type="text" oninput="updateSignature()"></label> <!-- Renamed from Title to Role -->
     
     <!-- New Campus field added here -->
-    <label><strong>Campus:</strong> <input id="campus" type="text" oninput="updateSignature()"></label>
+    <label>Campus: <input id="campus" type="text" oninput="updateSignature()"></label> <!-- Campus field added here -->
     
     <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
     <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
@@ -28,13 +28,13 @@
   <div id="signature">
     <div class="sig-details" id="sigDetails">
       <strong>Your Name</strong><br>
-      Your Title<br>
+      Your Role<br>
       📞 Phone<br>
       📧 email@example.com<br>
       📍 Your Location
     </div>
     <div class="sig-logo">
-      <img src="Sig%20Logo.png" alt="Signature Logo">
+      <img src="Sig%20Logo.png" width="400" alt="Signature Logo">
     </div>
   </div>
 
@@ -43,18 +43,20 @@
   <script>
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
-      const title = document.getElementById('title').value || 'Your Title';
-      const campus = document.getElementById('campus').value || '';  // New campus field
+      const role = document.getElementById('role').value || 'Your Role';  // Updated to Role
+      const campus = document.getElementById('campus').value.trim();  // Getting Campus value
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
 
-      // Update the signature details
-      let campusText = campus ? ` <strong>${campus}</strong>` : '';  // Bold campus text if entered
+      // Update Campus text: Always starts with "Arise in" followed by the campus name
+      const campusText = campus ? `Arise in ${campus}` : '';
 
+      // Update the signature details
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
-        ${title}${campusText}<br>
+        ${role}<br>
+        ${campusText}<br> <!-- Displaying the campus text -->
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
