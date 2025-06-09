@@ -13,11 +13,11 @@
 
   <!-- Text input fields in a list format -->
   <div class="form-fields">
-    <label for="fullName">Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-    <label for="title">Title: <input id="title" type="text" oninput="updateSignature()"></label>
-    <label for="phone">Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
-    <label for="email">Email: <input id="email" type="text" oninput="updateSignature()"></label>
-    <label for="location">Location: <input id="location" type="text" oninput="updateSignature()"></label>
+    <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
+    <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+    <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
+    <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
+    <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
   </div>
 
   <div id="signature">
@@ -58,3 +58,21 @@
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = document.getElementById("signature").innerHTML;
       document.body.appendChild(tempDiv);
+
+      const range = document.createRange();
+      range.selectNode(tempDiv);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+
+      try {
+        document.execCommand("copy");
+        alert("Signature copied to clipboard!");
+      } catch (err) {
+        alert("Failed to copy. Try selecting and copying manually.");
+      }
+
+      document.body.removeChild(tempDiv);
+    }
+  </script>
+</body>
+</html>
