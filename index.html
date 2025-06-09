@@ -11,20 +11,18 @@
     <div class="subtitle">Email Signature Generator</div>
   </div>
 
-  <!-- Text input fields container -->
+  <!-- Input fields container -->
   <div class="form-fields">
     <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
     <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
     <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
     <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
     <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
-    <label>Campus: <input id="campus" type="text" oninput="updateSignature()"></label> <!-- New Campus field -->
   </div>
 
+  <!-- Signature preview -->
   <div id="signature">
     <div class="sig-details" id="sigDetails">
-      <strong><span id="church-name">Arise Church</span> in <span id="campus-name"></span></strong><br>
-      <br>
       <strong>Your Name</strong><br>
       Your Title<br>
       📞 Phone<br>
@@ -32,7 +30,7 @@
       📍 Your Location
     </div>
     <div class="sig-logo">
-      <img src="Sig%20Logo.png" width="400" alt="Signature Logo">
+      <img src="Sig%20Logo.png" alt="Signature Logo">
     </div>
   </div>
 
@@ -45,18 +43,7 @@
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
-      const campus = document.getElementById('campus').value.trim();
 
-      // Update Campus-specific text
-      if (campus) {
-        document.getElementById('church-name').textContent = 'Arise Church in';
-        document.getElementById('campus-name').textContent = campus;
-      } else {
-        document.getElementById('church-name').textContent = 'Arise Church';
-        document.getElementById('campus-name').textContent = '';
-      }
-
-      // Update signature details
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
         ${title}<br>
