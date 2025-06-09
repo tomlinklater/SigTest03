@@ -13,12 +13,12 @@
 
   <!-- Text input fields container -->
   <div class="form-fields">
-    <label for="fullName">Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-    <label for="role">Role: <input id="role" type="text" oninput="updateSignature()"></label> <!-- Changed from Title to Role -->
-    <label for="campus">Campus: <input id="campus" type="text" oninput="updateSignature()"></label> <!-- Moved Campus field here -->
-    <label for="phone">Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
-    <label for="email">Email: <input id="email" type="text" oninput="updateSignature()"></label>
-    <label for="location">Location: <input id="location" type="text" oninput="updateSignature()"></label>
+    <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
+    <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+    <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
+    <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
+    <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+    <label>Campus: <input id="campus" type="text" oninput="updateSignature()"></label> <!-- New Campus field -->
   </div>
 
   <div id="signature">
@@ -26,7 +26,7 @@
       <strong><span id="church-name">Arise Church</span> in <span id="campus-name"></span></strong><br>
       <br>
       <strong>Your Name</strong><br>
-      Your Role<br>
+      Your Title<br>
       📞 Phone<br>
       📧 email@example.com<br>
       📍 Your Location
@@ -41,7 +41,7 @@
   <script>
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
-      const role = document.getElementById('role').value || 'Your Role';  // Updated to Role
+      const title = document.getElementById('title').value || 'Your Title';
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
@@ -59,7 +59,7 @@
       // Update signature details
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
-        ${role}<br>
+        ${title}<br>
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
