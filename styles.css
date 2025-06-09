@@ -3,12 +3,6 @@ body {
   margin: 30px;
   background-color: white;
   color: black;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.dark-mode {
-  background-color: #111;
-  color: white;
 }
 
 .logo-header {
@@ -27,14 +21,6 @@ body {
 .subtitle {
   font-size: 24px;
   font-weight: bold;
-}
-
-#modeToggle {
-  font-size: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
 
 .form-list {
@@ -71,18 +57,15 @@ body {
   gap: 20px;
 }
 
-.dark-mode #signature {
-  background: #222;
-  border-color: #444;
-}
-
 .sig-details {
   font-size: 14px;
 }
 
 .sig-logo img {
-  width: 200px;
+  width: 400px; /* 2x larger than original */
   height: auto;
+  display: block;
+  margin-top: 10px;
 }
 
 #copyBtn {
