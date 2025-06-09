@@ -27,51 +27,42 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 300px; /* Align the form fields to a fixed width */
+  width: 300px;
+  margin-bottom: 30px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
   font-size: 14px;
 }
 
 input {
   padding: 8px;
-  margin: 5px 0;
-  width: 100%;  /* Ensure the inputs take up the full width of the container */
-  box-sizing: border-box; /* Make sure the padding doesn't affect width */
+  margin-top: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #signature {
-  margin-top: 30px;
+  margin-top: 20px;
   border: 1px solid #ccc;
   padding: 20px;
   background: #f9f9f9;
   max-width: 600px;
 }
 
-.sig-table {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.sig-logo {
-  margin-top: 20px;
+.sig-details {
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .sig-logo img {
-  width: 400px; /* 2x bigger than original size */
+  width: 400px;
   height: auto;
 }
 
-.sig-details {
-  font-size: 14px;
-}
-
 #copyBtn {
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 10px 15px;
   background-color: #4CAF50;
   color: white;
