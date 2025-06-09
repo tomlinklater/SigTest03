@@ -1,17 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arise Church Email Signature Generator</title>
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/tomlinklater/SigTest03/main/styles.css">
+  <title>Email Signature Generator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h2>Arise Church Email Signature Generator</h2>
-  
+  <div class="logo-header">
+    <img src="Arise-Logo-Black.png" alt="ARISE Church Logo">
+    <div class="subtitle">Email Signature Generator</div>
+  </div>
+
   <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-  <label>Role in the Organisation: <input id="title" type="text" oninput="updateSignature()"></label>
-  <label>Campus: <input id="campus" type="text" oninput="updateSignature()"></label>
+  <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
   <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
   <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
   <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
@@ -19,12 +20,11 @@
   <div id="signature">
     <div class="sig-table">
       <div class="sig-logo">
-        <img src="arise-logo.png" width="120" alt="Arise Church Logo">
+        <img src="Sig%20Logo.png" width="100" alt="Signature Logo">
       </div>
       <div class="sig-details" id="sigDetails">
         <strong>Your Name</strong><br>
-        Your Role<br>
-        Arise Church in Your Campus<br>
+        Your Title<br>
         📞 Phone<br>
         📧 email@example.com<br>
         📍 Your Location
@@ -37,8 +37,7 @@
   <script>
     function updateSignature() {
       const name = document.getElementById('fullName').value || 'Your Name';
-      const title = document.getElementById('title').value || 'Your Role';
-      const campus = document.getElementById('campus').value || 'Your Campus';
+      const title = document.getElementById('title').value || 'Your Title';
       const phone = document.getElementById('phone').value || 'Phone';
       const email = document.getElementById('email').value || 'email@example.com';
       const location = document.getElementById('location').value || 'Your Location';
@@ -46,7 +45,6 @@
       document.getElementById('sigDetails').innerHTML = `
         <strong>${name}</strong><br>
         ${title}<br>
-        Arise Church in ${campus}<br>
         📞 ${phone}<br>
         📧 ${email}<br>
         📍 ${location}
