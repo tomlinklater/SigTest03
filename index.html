@@ -11,24 +11,26 @@
     <div class="subtitle">Email Signature Generator</div>
   </div>
 
-  <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
-  <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
-  <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
-  <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
-  <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+  <!-- Input fields container -->
+  <div class="form-fields">
+    <label>Full Name: <input id="fullName" type="text" oninput="updateSignature()"></label>
+    <label>Title: <input id="title" type="text" oninput="updateSignature()"></label>
+    <label>Phone: <input id="phone" type="text" oninput="updateSignature()"></label>
+    <label>Email: <input id="email" type="text" oninput="updateSignature()"></label>
+    <label>Location: <input id="location" type="text" oninput="updateSignature()"></label>
+  </div>
 
+  <!-- Signature preview -->
   <div id="signature">
-    <div class="sig-table">
-      <div class="sig-logo">
-        <img src="Sig%20Logo.png" width="100" alt="Signature Logo">
-      </div>
-      <div class="sig-details" id="sigDetails">
-        <strong>Your Name</strong><br>
-        Your Title<br>
-        📞 Phone<br>
-        📧 email@example.com<br>
-        📍 Your Location
-      </div>
+    <div class="sig-details" id="sigDetails">
+      <strong>Your Name</strong><br>
+      Your Title<br>
+      📞 Phone<br>
+      📧 email@example.com<br>
+      📍 Your Location
+    </div>
+    <div class="sig-logo">
+      <img src="Sig%20Logo.png" alt="Signature Logo">
     </div>
   </div>
 
