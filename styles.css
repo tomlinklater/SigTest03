@@ -6,11 +6,9 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #111;
-    color: white;
-  }
+.dark-mode {
+  background-color: #111;
+  color: white;
 }
 
 .logo-header {
@@ -31,25 +29,35 @@ body {
   font-weight: bold;
 }
 
-form {
+#modeToggle {
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
   max-width: 600px;
-  margin-bottom: 30px;
 }
 
-.form-row {
+.form-list li {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
-.form-row label {
-  width: 120px;
+.form-list label {
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.form-row input {
-  flex: 1;
+.form-list input {
   padding: 8px;
+  font-size: 14px;
 }
 
 #signature {
@@ -59,11 +67,9 @@ form {
   max-width: 600px;
 }
 
-@media (prefers-color-scheme: dark) {
-  #signature {
-    background: #222;
-    border-color: #444;
-  }
+.dark-mode #signature {
+  background: #222;
+  border-color: #444;
 }
 
 .sig-table {
