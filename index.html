@@ -13,11 +13,11 @@
 
   <form id="sigForm">
     <ul class="form-list">
-      <li><label for="fullName">Full Name:</label><input id="fullName" type="text" oninput="updateSignature()" /></li>
-      <li><label for="title">Title:</label><input id="title" type="text" oninput="updateSignature()" /></li>
-      <li><label for="phone">Phone:</label><input id="phone" type="text" oninput="updateSignature()" /></li>
-      <li><label for="email">Email:</label><input id="email" type="text" oninput="updateSignature()" /></li>
-      <li><label for="location">Location:</label><input id="location" type="text" oninput="updateSignature()" /></li>
+      <li><label for="fullName">Full Name:</label><input id="fullName" type="text" /></li>
+      <li><label for="title">Title:</label><input id="title" type="text" /></li>
+      <li><label for="phone">Phone:</label><input id="phone" type="text" /></li>
+      <li><label for="email">Email:</label><input id="email" type="text" /></li>
+      <li><label for="location">Location:</label><input id="location" type="text" /></li>
     </ul>
   </form>
 
@@ -34,9 +34,10 @@
     </div>
   </div>
 
-  <button id="copyBtn" onclick="copySignature()">Copy HTML</button>
+  <button id="copyBtn">Copy HTML</button>
 
   <script>
+    // Dynamically update signature on input
     function updateSignature() {
       const name = document.getElementById("fullName").value || "Your Name";
       const title = document.getElementById("title").value || "Your Title";
@@ -45,4 +46,38 @@
       const location = document.getElementById("location").value || "Your Location";
 
       document.getElementById("sigDetails").innerHTML = `
-        <strong>${name}</strong
+        <strong>${name}</strong><br>
+        ${title}<br>
+        📞 ${phone}<br>
+        📧 ${email}<br>
+        📍 ${location}
+      `;
+    }
+
+    // Attach input event listeners after DOM loads
+    window.addEventListener("DOMContentLoaded", () => {
+      const inputs = document.querySelectorAll("#sigForm input");
+      inputs.forEach(input => {
+        input.addEventListener("input", updateSignature);
+      });
+
+      document.getElementById("copyBtn").addEventListener("click", () => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = document.getElementById("signature").innerHTML;
+        document.body.appendChild(tempDiv);
+        const range = document.createRange();
+        range.selectNode(tempDiv);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        try {
+          document.execCommand("copy");
+          alert("Signature copied to clipboard!");
+        } catch (err) {
+          alert("Failed to copy. Try selecting and copying manually.");
+        }
+        document.body.removeChild(tempDiv);
+      });
+    });
+  </script>
+</body>
+</html>
